@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: srmtest
+  name: srmtest
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: srmtest
+  template:
+    metadata:
+      labels:
+        app: srmtest
+    spec:
+      containers:
+      - image: public.ecr.aws/c4g9r2g6/srm:latest
+        name: srm
+        ports:
+        - containerPort: 4568
